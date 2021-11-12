@@ -1,0 +1,15 @@
+{
+    "name": "cwchen/frameworkless-php",
+    "description": "PHP Boilerplate Web Project",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Michelle Chen",
+            "email": "cwchen.tw@outlook.com"
+        }
+    ],
+    "require": {
+        "php": "^7.3"
+    }
+}
