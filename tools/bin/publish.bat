@@ -1,5 +1,5 @@
 @echo off
-rem Run a PHP site locally with builtin web server of PHP.
+rem Publish a mdmcs site to a PaaS.
 
 
 rem Check whether PHP is available on the system.
@@ -37,7 +37,7 @@ if not exist %root%\vendor (
     )
 )
 
-rem Load assets.
+rem Load theme assets.
 call %bin%\assets.bat || (
     exit /b %ERRORLEVEL%
 )
@@ -53,7 +53,3 @@ copy /y %root%\www\index.php %root%\public || (
     echo Unable to copy router of mdmcs to public directory >&2
     exit /b 1
 )
-
-rem Run a PHP site locally.
-echo Run a PHP site locally. Press ctrl + c to stop the server.
-php -S %address% -t %root%\public

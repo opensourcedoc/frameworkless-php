@@ -14,10 +14,11 @@ cwd=$(dirname $0);
 bin="${cwd}/../bin";
 lib="${cwd}/../lib";
 libexec="${cwd}/../libexec";
+root="${cwd}/../..";
 
-if ! [ -d "public" ];
+if ! [ -d "${root}/public" ];
 then
-    mkdir -p "public" || (
+    mkdir -p "${root}/public" || (
         echo "Unable to create a public directory" >&2;
         exit 1;
     )

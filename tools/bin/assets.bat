@@ -16,10 +16,12 @@ rem Get path to library.
 set lib=%cwd%..\lib
 rem Get path to PHP scripts.
 set libexec=%cwd%..\libexec
+rem Get the root path.
+set root=%cwd%..\..
 
 rem Create a public directory if it doesn't exist.
-if not exist public (
-    mkdir public || (
+if not exist %root%\public (
+    mkdir %root%\public || (
         echo Unable to create a public directory >&2
         exit /b 1
     )

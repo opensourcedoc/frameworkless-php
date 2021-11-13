@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# Run a PHP site locally with builtin web server of PHP.
+# Publish a PHP site to a PaaS.
 
 
 # Check whether PHP is available on the system.
@@ -10,18 +10,10 @@ then
     exit 1;
 fi
 
-# Get an address.
-address=$1;
-if [ -z "$address" ];
-then
-    address="localhost:5000";
-fi
-
 cwd=$(dirname $0);
 bin="${cwd}/../bin";
 lib="${cwd}/../lib";
 libexec="${cwd}/../libexec";
-root="${cwd}/../..";
 
 # Download third-party PHP packages if they don't exist.
 if ! [ -d "${root}/vendor" ];
@@ -55,12 +47,8 @@ cp -pr "${root}/static/"* "${root}/public" || (
     exit 1;
 )
 
-# Copy the router.
+# Copy router of mdcms.
 cp -pr "${root}/www/index.php" "${root}/public" || (
-    echo "Unable to copy the router to public directory" >&2;
+    echo "Unable to copy router of mdmcs to public directory" >&2;
     exit 1;
 )
-
-# Run a PHP site locally.
-echo "Run a PHP site locally. Press ctrl + c to stop the server."
-php -S "$address" -t "${root}/public";
