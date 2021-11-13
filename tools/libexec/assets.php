@@ -46,12 +46,12 @@ if (!$hasAsset) {
 # Save the path of old working directory.
 $oldDirectory = getcwd();
 
-# Move to root path of mdcms.
+# Move to the root path.
 if (!chdir($rootDirectory)) {
     # Move back to old working directory.
     chdir($oldDirectory);
 
-    fwrite(STDERR, "Unable to change working directory to root path of mdcms", PHP_EOL);
+    fwrite(STDERR, "Unable to change working directory to the root path", PHP_EOL);
     exit(1);
 }
 
@@ -80,7 +80,7 @@ if (!system("npm run prod")) {
 
 # Copy assets recursively.
 try {
-    # xCopy is a utility function in mdcms.
+    # xCopy is a utility function.
     #  It will copy directories and files recursively.
     xCopy($assetDirectory, $publicDirectory);
 }
