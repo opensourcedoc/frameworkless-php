@@ -14,6 +14,7 @@ cwd=$(dirname $0);
 bin="${cwd}/../bin";
 lib="${cwd}/../lib";
 libexec="${cwd}/../libexec";
+root="${cwd}/../..";
 
 # Download third-party PHP packages if they don't exist.
 if ! [ -d "${root}/vendor" ];
