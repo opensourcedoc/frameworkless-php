@@ -47,8 +47,8 @@ cp -pr "${root}/static/"* "${root}/public" || (
     exit 1;
 )
 
-# Copy router of mdcms.
-cp -pr "${root}/www/index.php" "${root}/public" || (
-    echo "Unable to copy router of mdmcs to public directory" >&2;
+# Copy PHP scripts.
+cp -pr "${root}/www/"* "${root}/public" || (
+    echo "Unable to copy PHP scripts to public directory" >&2;
     exit 1;
 )

@@ -1,0 +1,93 @@
+#!/bin/sh
+#
+# Sync a local mdcms repo to a production environment.
+#  Unrequired directories and files are skipped.
+
+
+# Check whether PHP is available on the system.
+if ! command -v php 2>&1 1>/dev/null;
+then
+    echo "No PHP on the system" >&2;
+    exit 1;
+fi
+
+# Check whether `rsync(1)` is available.
+if ! command -v rsync 2>&1 >/dev/null;
+then
+    echo "No rsync on the system" >&2;
+    exit 1;
+fi
+
+# Get a destination.
+dest=$1;
+if [ -z "$dest" ];
+then
+    echo "No destination" >&2;
+    exit 1;
+fi
+
+# Check whether the destination is valid.
+if ! [ -d "$dest" ];
+then
+    echo "Invalid destination: $dest" >&2;
+    exit 1;
+fi
+
+cwd=$(dirname $0);
+bin="${cwd}/../bin";
+lib="${cwd}/../lib";
+libexec="${cwd}/../libexec";
+root="${cwd}/../..";
+
+# Download third-party PHP packages if they don't exist.
+if ! [ -d "${root}/vendor" ];
+then
+    if [ "$(id -u)" -eq 0 ];
+    then
+        echo "Install PHP packages with Composer by a normal user" >&2;
+        exit 1;
+    fi
+
+    # Check whether Composer is available on the system.
+    if ! command -v composer 2>&1 1>/dev/null;
+    then
+        echo "No Composer on the system" >&2
+        exit 1;
+    fi
+
+    composer install --no-dev || (
+        exit $?;
+    )
+fi
+
+# Remove old public directory.
+rm -rf "${root}/public" || (
+    echo "Unable to delete public directory" >&2;
+    exit 1;
+)
+
+# Load assets.
+"${bin}/assets" || (
+    exit $?;
+)
+
+# Copy static files.
+cp -pr "${root}/static/"* "${root}/public" || (
+    echo "Unable to copy static files to the public directory" >&2;
+    exit 1;
+)
+
+# Sync directories and files between the source
+#  and the destination.
+#
+# Directories and files on the destination may be deleted.
+#  Don't edit them on production environments.
+rsync -rvh --delete \
+    --exclude ".git*" \
+    --exclude tools --exclude assets --exclude build --exclude static \
+    --exclude composer.json --exclude composer.lock \
+    --exclude LICENSE --exclude README.md --exclude TODO.md \
+    --exclude package.json --exclude package-lock.json --exclude node_modules \
+    --exclude .browserlistrc --exclude .stylelintrc \
+    --exclude .eslintrc --exclude .flowconfig \
+    "${root}/" "${dest}/";

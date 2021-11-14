@@ -48,8 +48,8 @@ xcopy /s /y %root%\static %root%\public || (
     exit /b 1
 )
 
-rem Copy the router.
-copy /y %root%\www\index.php %root%\public || (
-    echo Unable to copy router of mdmcs to public directory >&2
+rem Copy PHP scripts.
+xcopy /s /y %root%\www %root%\public || (
+    echo Unable to copy PHP scripts to public directory >&2
     exit /b 1
 )
