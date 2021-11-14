@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# Sync a local mdcms repo to a production environment.
+# Sync a local PHP site to a production environment.
 #  Unrequired directories and files are skipped.
 
 

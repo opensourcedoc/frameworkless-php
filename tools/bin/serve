@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# Run a PHP site locally with builtin web server of PHP.
+# Run a PHP site locally with a builtin web server of PHP.
 
 
 # Check whether PHP is available on the system.

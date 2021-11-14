@@ -1,5 +1,5 @@
 @echo off
-rem Run a PHP site locally with builtin web server of PHP.
+rem Run a PHP site locally with a builtin web server of PHP.
 
 
 rem Check whether PHP is available on the system.

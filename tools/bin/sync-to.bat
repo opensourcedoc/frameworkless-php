@@ -1,5 +1,5 @@
 @echo off
-rem Sync a local mdcms repo to a production environment.
+rem Sync a local PHP site to a production environment.
 rem  Unrequired directories and files are skipped.
 
 
