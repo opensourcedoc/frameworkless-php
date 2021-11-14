@@ -1,5 +1,5 @@
 @echo off
-rem A utility script to load personal assets.
+rem A utility script to load assets.
 
 
 rem Check whether PHP is available on the system.
@@ -10,11 +10,11 @@ php --version >nul || (
 
 rem Get working directory of current batch script.
 set cwd=%~dp0
-rem Get path to executables.
+rem Get the path to the tool executables.
 set bin=%cwd%..\bin
-rem Get path to library.
+rem Get the path to the tool library.
 set lib=%cwd%..\lib
-rem Get path to PHP scripts.
+rem Get the path to the PHP scripts.
 set libexec=%cwd%..\libexec
 rem Get the root path.
 set root=%cwd%..\..
@@ -27,7 +27,7 @@ if not exist %root%\public (
     )
 )
 
-rem Load personal assets.
+rem Load assets.
 php %libexec%\assets.php || (
     exit /b %ERRORLEVEL%
 )

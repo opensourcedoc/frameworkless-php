@@ -17,10 +17,15 @@ then
     address="localhost:5000";
 fi
 
+# Get working directory of current batch script.
 cwd=$(dirname $0);
+# Get the path to the tool executables.
 bin="${cwd}/../bin";
+# Get the path to the tool library.
 lib="${cwd}/../lib";
+# Get the path to the PHP scripts.
 libexec="${cwd}/../libexec";
+# Get the root path.
 root="${cwd}/../..";
 
 # Download third-party PHP packages if they don't exist.

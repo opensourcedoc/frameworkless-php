@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# A utility script to load personal assets.
+# A utility script to load assets.
 
 
 # Check whether PHP is available on the system.
@@ -10,12 +10,18 @@ then
     exit 1;
 fi
 
+# Get working directory of current batch script.
 cwd=$(dirname $0);
+# Get the path to the tool executables.
 bin="${cwd}/../bin";
+# Get the path to the tool library.
 lib="${cwd}/../lib";
+# Get the path to the PHP scripts.
 libexec="${cwd}/../libexec";
+# Get the root path.
 root="${cwd}/../..";
 
+# Create a public directory if it doesn't exist.
 if ! [ -d "${root}/public" ];
 then
     mkdir -p "${root}/public" || (
@@ -24,6 +30,7 @@ then
     )
 fi
 
+# Load assets.
 php "${libexec}/assets.php" || (
     exit 1;
 )
