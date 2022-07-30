@@ -8,7 +8,7 @@ A "no framework" approach to PHP web development.
 
 * Production
   * A major GNU/Linux distribution is recommended
-  * PHP 7.3 or above
+  * [PHP](https://www.php.net/) 8.1 or above
 * Development
   * [Composer](https://getcomposer.org/)
 
@@ -17,7 +17,7 @@ A "no framework" approach to PHP web development.
 * Production
   * A [modern browser](https://browsehappy.com/) like Chrome or Firefox
 * Development
-  * Node.js 16.x or above
+  * [Node.js](https://nodejs.org/) 16.x or above
   * [Gulp](https://gulpjs.com/)
   * [Sass](https://sass-lang.com/)
   * [Autoprefixer](https://github.com/postcss/autoprefixer)
@@ -28,10 +28,10 @@ A "no framework" approach to PHP web development.
 
 ### Install CLI Tools on Windows
 
-```
-> choco install php --version=7.4.23
+```shell
+> choco install php --version=8.1.8
 > choco install composer
-> choco install nodejs
+> choco install nodejs --version=16.16.0
 > choco install rsync
 > choco install sed
 ```
@@ -40,20 +40,20 @@ A "no framework" approach to PHP web development.
 
 Clone the repo locally:
 
-```
+```shell
 $ git clone https://github.com/cwchentw/frameworkless-php.git myapp
 $ cd myapp
 ```
 
 Run your web app locally:
 
-```
+```shell
 $ ./tools/bin/serve localhost:3000
 ```
 
 To deploy your app to a PaaS, invoke this command:
 
-```
+```shell
 $ ./tools/bin/publish
 ```
 
@@ -61,7 +61,7 @@ This command exposes all external files to *public* directory.
 
 To deploy your app to an IaaS, invoke this command:
 
-```
+```shell
 $ sudo ./tools/bin/sync-to /path/to/www
 ```
 
@@ -69,4 +69,4 @@ The root directory of your app is located in *www* directory.
 
 ## Copyright
 
-Copyright (c) 2021 Michelle Chen. Licensed under MIT
+Copyright (c) 2021-2022 Michelle Chen. Licensed under MIT
