@@ -66,6 +66,11 @@ cp -pr "${root}/www/"* "${root}/public" || (
     exit 1;
 )
 
+# Monitor asset change(s).
+cd "${root}" && npm run watch &
+export LIGHTWEIGHT_CMS_SITE_ASSET_PID=$!
+
 # Run a PHP site locally.
 echo "Run a PHP site locally. Press ctrl + c to stop the server."
+trap "kill -9 ${LIGHTWEIGHT_CMS_SITE_ASSET_PID}" exit;
 php -S "$address" -t "${root}/public";
