@@ -67,6 +67,9 @@ xcopy /s /y %root%\static %root%\public || (
     exit /b 1
 )
 
+rem Remove the router.
+del /q %public%\index.php
+
 rem Trick for rsync on Windows.
 set source=%root:C:\=\cygdrive\c\%\
 set target=%dest:C:\=\cygdrive\c\%
