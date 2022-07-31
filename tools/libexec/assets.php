@@ -10,39 +10,6 @@ $rootDirectory = __DIR__ . $sep . ".." . $sep . "..";
 $assetDirectory = $rootDirectory . $sep . "assets";
 $publicDirectory = $rootDirectory . $sep . "public";
 
-$hasAsset = false;
-
-$dirs = array();
-array_push($dirs, $assetDirectory);
-
-# Scan the directory of assets to check
-#  whether any asset exists.
-while (!$hasAsset && count($dirs) > 0) {
-    $dir = array_pop($dirs);
-
-    $files = scandir($dir);
-    foreach ($files as $file) {
-        # Skip private directories and files.
-        if ("." == substr($file, 0, 1)) {
-            continue;
-        }
-
-        $path = $dir . "/" . $file;
-        if (is_dir($path)) {
-            array_push($dirs, $path);
-        }
-        else if (file_exists($path)) {
-            $hasAsset = true;
-            break;
-        }
-    }
-}
-
-# Exit if no asset.
-if (!$hasAsset) {
-    exit(0);
-}
-
 # Save the path of old working directory.
 $oldDirectory = getcwd();
 
