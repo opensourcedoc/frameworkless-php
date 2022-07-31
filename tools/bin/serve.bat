@@ -55,6 +55,9 @@ xcopy /s /y %root%\www %root%\public || (
     exit /b 1
 )
 
+rem Monitor asset change(s).
+cd %root% && start "" npm run watch
+
 rem Run a PHP site locally.
 echo Run a PHP site locally. Press ctrl + c to stop the server.
 php -S %address% -t %root%\public
