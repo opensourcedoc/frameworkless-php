@@ -82,6 +82,9 @@ cp -pr "${root}/static/"* "${root}/public" || (
     exit 1;
 )
 
+# Remove the router.
+rm -f "${public}/index.php";
+
 # Sync directories and files between the source
 #  and the destination.
 #
