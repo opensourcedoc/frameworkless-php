@@ -17,7 +17,7 @@ A "no framework" approach to PHP web development.
 * Production
   * A [modern browser](https://browsehappy.com/) like Chrome or Firefox
 * Development
-  * [Node.js](https://nodejs.org/) 16.x or above
+  * [Node.js](https://nodejs.org/) 18.x or above
   * [Gulp](https://gulpjs.com/)
   * [Sass](https://sass-lang.com/)
   * [Autoprefixer](https://github.com/postcss/autoprefixer)
@@ -29,9 +29,9 @@ A "no framework" approach to PHP web development.
 ### Install CLI Tools on Windows
 
 ```shell
-> choco install php --version=8.1.8
+> choco install php --version=8.1.21
 > choco install composer
-> choco install nodejs --version=16.16.0
+> choco install nodejs --version=18.16.1
 > choco install rsync
 > choco install sed
 ```
@@ -48,7 +48,7 @@ $ cd myapp
 Run your web app locally:
 
 ```shell
-$ ./tools/bin/serve localhost:3000
+$ ./tools/bin/serve localhost:5000
 ```
 
 To deploy your app to a PaaS, invoke this command:
@@ -69,4 +69,4 @@ The root directory of your app is located in *www* directory.
 
 ## Copyright
 
-Copyright (c) 2021-2022 Michelle Chen. Licensed under MIT
+Copyright (c) 2021-2023 Michelle Chen. Licensed under MIT
