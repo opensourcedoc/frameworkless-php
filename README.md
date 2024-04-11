@@ -69,4 +69,4 @@ The root directory of your app is located in *www* directory.
 
 ## Copyright
 
-Copyright (c) 2021-2023 Michelle Chen. Licensed under MIT
+Copyright (c) 2021-2023 OpenTechTutorials. Licensed under MIT
